@@ -1,6 +1,6 @@
 # Currency Converter
 
-Welcome to the Currency Converter, a JavaScript-based tool designed to help you convert between different currencies using real-time exchange rates from the Exchange Rate API. This tool provides a user-friendly interface for quick and accurate currency conversions.
+Welcome to the Currency Converter, a React-based tool designed to help you convert between different currencies using real-time exchange rates from the Exchange Rate API. This tool provides a user-friendly interface for quick and accurate currency conversions.
 
 
 ## Features
