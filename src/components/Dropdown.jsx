@@ -1,21 +1,16 @@
 import { currencies } from "./Currencies.jsx";
-import { useId } from "react";
+import { useId, useRef, useEffect } from "react";
 
-export function Dropdown({
-  setCurrency,
-  input,
-  setInput,
-  open,
-  setOpen,
-}) {
-
+export function Dropdown({ setCurrency, input, setInput, open, setOpen }) {
   function setDropdown() {
     return currencies
-      .filter((option) =>
-        option.toLowerCase().startsWith(input.toLowerCase())
-      )
+      .filter((option) => option.toLowerCase().startsWith(input.toLowerCase()))
       .map((item) => (
-        <div key={item} className="option" onClick={() => onOptionClicked(item)}>
+        <div
+          key={item}
+          className="option"
+          onClick={() => onOptionClicked(item)}
+        >
           {item}
         </div>
       ));
@@ -28,13 +23,28 @@ export function Dropdown({
   }
 
   function toggleDropdown() {
-    setOpen(prev => !prev);
+    setOpen((prev) => !prev);
   }
 
   const id = useId();
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [dropdownRef, setOpen]);
 
   return (
-    <div className="dropdown-container">
+    <div className="dropdown-container" ref={dropdownRef}>
       <div className="input-container">
         <input
           type="text"
