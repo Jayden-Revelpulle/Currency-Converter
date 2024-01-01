@@ -1,4 +1,5 @@
 import { currencies } from "./Currencies.jsx";
+import { useId } from "react";
 
 export function Dropdown({
   setCurrency,
@@ -30,6 +31,8 @@ export function Dropdown({
     setOpen(prev => !prev);
   }
 
+  const id = useId();
+
   return (
     <div className="dropdown-container">
       <div className="input-container">
@@ -40,6 +43,7 @@ export function Dropdown({
           onChange={(e) => setInput(e.target.value)}
           onClick={() => toggleDropdown()}
           className="search"
+          id={id}
         />
         <div className="arrow-container">
           <i onClick={() => toggleDropdown()} className="arrow" />
