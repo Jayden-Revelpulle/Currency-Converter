@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 //import {searchTerm} from "./Dropdown";
 
-export function Result({ amount, srcCurrency, tarCurrency, searchTerm, setSearchTerm }) {
+export function Result({ amount, srcCurrency, tarCurrency }) {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export function Result({ amount, srcCurrency, tarCurrency, searchTerm, setSearch
     }
 
     updateResult();
-  }, [amount, srcCurrency, tarCurrency, searchTerm]);
+  }, [amount, srcCurrency, tarCurrency]);
 
   async function fetchExchangeRates() {
     const apiKey = "98b5e9d846e936f77cf9db0f";
