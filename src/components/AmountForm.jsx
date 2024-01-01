@@ -1,7 +1,8 @@
 export function AmountForm({ amount, setAmount }) {
+
   return (
     <>
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="amount">Amount:</label>
         <br></br>
         <input
